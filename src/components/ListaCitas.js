@@ -1,7 +1,8 @@
 import React from 'react';
 import Cita from './Cita';
+import PropTypes from 'prop-types';
 
-const ListaCitas = ({consultas}) => {
+const ListaCitas = ({consultas, eliminarConsulta}) => {
   return (
       <div className='card mt-2 py-5'>
         <div className='card-body'>
@@ -11,6 +12,7 @@ const ListaCitas = ({consultas}) => {
                 <Cita
                   key={consulta.id}
                   consulta={consulta}
+                  eliminarConsulta={eliminarConsulta}
                 />
             ))}
           </div>
@@ -18,5 +20,10 @@ const ListaCitas = ({consultas}) => {
       </div>
   );
 }
+
+ListaCitas.propTypes = {
+  consultas: PropTypes.array.isRequired,
+  eliminarConsulta: PropTypes.func.isRequired
+};
 
 export default ListaCitas;
